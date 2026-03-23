@@ -686,6 +686,8 @@ def write_json(results: list[dict], out_path: str) -> None:
 # ENTRY POINT
 # ---------------------------------------------------------------------------
 def main() -> None:
+    global CACHE_EXPIRY_DAYS, DB_PATH
+    
     parser = argparse.ArgumentParser(
         description=(
             "IOC Reputation Pipeline v2  —  "
@@ -706,7 +708,7 @@ def main() -> None:
                         help=f"SQLite path (default: {DB_PATH})")
     args = parser.parse_args()
 
-    global CACHE_EXPIRY_DAYS, DB_PATH
+    
     CACHE_EXPIRY_DAYS = args.cache_days
     DB_PATH           = args.db
 
